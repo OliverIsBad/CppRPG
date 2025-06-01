@@ -39,7 +39,6 @@ int main(int argv, char* args[]) {
     Entity entities[3] = {Entity(0,0,grassTexture), Entity(100,100,grassTexture), Entity(150,150,grassTexture)};
 
     bool gameRunning = true;
-
     SDL_Event event;
 
     const int FPS = 6;
@@ -49,8 +48,10 @@ int main(int argv, char* args[]) {
         Uint32 frameStart = SDL_GetTicks();
 
         while (SDL_PollEvent(&event)) {
-            if(event.type == SDL_QUIT)
+            if(event.type == SDL_QUIT) {
                 gameRunning = false;
+            }
+            player.move(event);
         }
 
         window.clear();
