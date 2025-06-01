@@ -30,6 +30,14 @@ SDL_Rect Entity::getCurrentFrame() {
     return currentFrame;
 }
 
+void Entity::setX(int p_x) {
+    x = p_x;
+}
+
+void Entity::setY(int p_y) {
+    y = p_y;
+}
+
 void Entity::setCurrentFrame(const SDL_Rect& frame) {
     currentFrame = frame;
 }

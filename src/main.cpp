@@ -26,8 +26,11 @@ int main(int argv, char* args[]) {
     if (!(IMG_Init(IMG_INIT_PNG))) {
         std::cout << "IMG_INIT has failed. Error: " << SDL_GetError() << std::endl;
     }
-    
-    RenderWindow window("GAME v1.0", 1280, 720);
+
+    const int screenWidth = 1280;
+    const int screenHeight = 720;
+
+    RenderWindow window("GAME v1.0", screenWidth, screenHeight);
 
     SDL_Texture* grassTexture = window.loadTexture("res/gfx/ground_grass_1.png");
     SDL_Texture* playerTexture = window.loadTexture("res/gfx/playerIdle.png");
@@ -41,7 +44,7 @@ int main(int argv, char* args[]) {
 
     const int FPS = 6;
     const int frameDelay = 1000/ FPS;
-
+    
     while (gameRunning) {
         Uint32 frameStart = SDL_GetTicks();
 
@@ -51,7 +54,7 @@ int main(int argv, char* args[]) {
         }
 
         window.clear();
-        window.renderCheckerboard(64, 1280, 720);
+        window.renderCheckerboard(64, screenWidth, screenHeight);
                 //renderEntities(window, entities, std::size(entities));
         window.render(player);
         player.update();
