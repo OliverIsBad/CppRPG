@@ -35,7 +35,7 @@ int main(int argv, char* args[]) {
     SDL_Texture* grassTexture = window.loadTexture("res/gfx/ground_grass_1.png");
     SDL_Texture* playerTexture = window.loadTexture("res/gfx/playerIdle.png");
 
-    Player player(100, 50, playerTexture, 64,64,32,32);
+    Player player(100, 112, playerTexture, 64,64,32,32);
     Entity entities[3] = {Entity(0,0,grassTexture), Entity(100,100,grassTexture), Entity(150,150,grassTexture)};
 
     bool gameRunning = true;

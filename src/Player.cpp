@@ -1,4 +1,3 @@
-
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_keycode.h>
@@ -26,25 +25,26 @@ void Player::update() {
     }
 }
 
-
 void Player::move(const SDL_Event& event) {
     if (event.type == SDL_KEYDOWN) {
         SDL_Keycode key = event.key.keysym.sym;
+        int newX = getX();
 
         switch (key) {
-            case SDLK_w:
-                setY(getY() - 5);  // Nach oben bewegen
-                break;
-            case SDLK_s:
-                setY(getY() + 5);  // Nach unten bewegen
-                break;
             case SDLK_a:
-                setX(getX() - 5);  // Nach links bewegen
+                newX -= 5;
                 break;
             case SDLK_d:
-                setX(getX() + 5);  // Nach rechts bewegen
+                newX += 5;
                 break;
+        }
+
+        if (!checkBounds(newX, 230)) {
+            setX(newX);
         }
     }
 }
 
+bool Player::checkBounds(int x, int p_xBounds) {
+return x < -6 || x > p_xBounds;
+}
