@@ -8,6 +8,7 @@
 #include "Utils.hpp"
 
 Player::Player(float p_x, float p_y, SDL_Texture* p_tex, int p_sheetW, int p_sheetH, int p_frameH, int p_frameW) : Entity(p_x, p_y, p_tex), frameWidth(p_frameW), frameHeight(p_frameH) {
+    updateCounter = 0;
     frames = splitSpriteSheet(p_frameW, p_frameH, p_sheetW, p_sheetH);
 
     if (!frames.empty()) {
@@ -17,8 +18,12 @@ Player::Player(float p_x, float p_y, SDL_Texture* p_tex, int p_sheetW, int p_she
 }
 
 void Player::update() {
-    currentFrameIndex = (currentFrameIndex + 1) % frames.size();
-    setCurrentFrame(frames[currentFrameIndex]);
+    updateCounter++;
+    if(updateCounter >= 10) {
+        currentFrameIndex = (currentFrameIndex + 1) % frames.size();
+        setCurrentFrame(frames[currentFrameIndex]);
+        updateCounter = 0;
+    }
 }
 
 

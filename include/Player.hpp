@@ -17,4 +17,5 @@ private:
     std::vector<SDL_Rect> frames;
     int currentFrameIndex = 0;
     int frameWidth, frameHeight;
+    int updateCounter = 0; 
 };

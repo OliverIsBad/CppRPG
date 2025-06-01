@@ -41,7 +41,7 @@ int main(int argv, char* args[]) {
     bool gameRunning = true;
     SDL_Event event;
 
-    const int FPS = 6;
+    const int FPS = 60;
     const int frameDelay = 1000/ FPS;
     
     while (gameRunning) {
