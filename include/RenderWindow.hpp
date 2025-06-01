@@ -13,6 +13,7 @@ public:
     void clear();
     void render(Entity& p_entity);
     void display();
+    void renderCheckerboard(int tileSize, int screenWidth, int screenHeight);
 
 private:
     SDL_Window* window;

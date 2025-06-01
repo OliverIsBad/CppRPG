@@ -30,3 +30,7 @@ SDL_Rect Entity::getCurrentFrame() {
     return currentFrame;
 }
 
+void Entity::setCurrentFrame(const SDL_Rect& frame) {
+    currentFrame = frame;
+}
+

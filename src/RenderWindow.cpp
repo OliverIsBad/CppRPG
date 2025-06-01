@@ -47,8 +47,8 @@ void RenderWindow::render(Entity& p_entity) {
     src.h = p_entity.getCurrentFrame().h;
 
     SDL_Rect dst;
-    dst.x = p_entity.getX();
-    dst.y = p_entity.getY();
+    dst.x = p_entity.getX() * 4;
+    dst.y = p_entity.getY() * 4;
     dst.w = p_entity.getCurrentFrame().w * 4;
     dst.h = p_entity.getCurrentFrame().h * 4;
 
@@ -57,4 +57,28 @@ void RenderWindow::render(Entity& p_entity) {
 
 void RenderWindow::display() {
     SDL_RenderPresent(renderer);
+}
+
+void RenderWindow::renderCheckerboard(int tileSize, int screenWidth, int screenHeight) {
+    SDL_Rect rect;
+    rect.w = tileSize;
+    rect.h = tileSize;
+
+    for (int y = 0; y < screenHeight; y += tileSize) {
+        for (int x = 0; x < screenWidth; x += tileSize) {
+            rect.x = x;
+            rect.y = y;
+
+            // Schachbrettmuster: abwechselnde Farben
+          
+            if (((x / tileSize) + (y / tileSize)) % 2 == 0) {
+                SDL_SetRenderDrawColor(renderer, 180, 150, 200, 255); // Dunkellila (Indigo)
+            } else {
+                SDL_SetRenderDrawColor(renderer, 200, 170, 220, 255); // Helllila (BlueViolet)
+            }
+
+
+            SDL_RenderFillRect(renderer, &rect);
+        }
+    }
 }

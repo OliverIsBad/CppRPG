@@ -13,6 +13,7 @@ public:
     float getY();
     SDL_Texture* getTex();
     SDL_Rect getCurrentFrame();
+    void setCurrentFrame(const SDL_Rect& frame);
 
 private:
     float x, y;
