@@ -8,6 +8,7 @@
 #include <iostream>
 #include "Player.hpp"
 #include "Entity.hpp"
+#include "Food.hpp"
 #include "RenderWindow.hpp"
 
 // Renders all Entities
@@ -32,11 +33,13 @@ int main(int argv, char* args[]) {
 
     RenderWindow window("GAME v1.0", screenWidth, screenHeight);
 
-    SDL_Texture* grassTexture = window.loadTexture("res/gfx/ground_grass_1.png");
     SDL_Texture* playerTexture = window.loadTexture("res/gfx/playerIdle.png");
+    SDL_Texture* appleTexture = window.loadTexture("res/gfx/apple.png");
 
     Player player(100, 112, playerTexture, 64,64,32,32);
-    Entity entities[3] = {Entity(0,0,grassTexture), Entity(100,100,grassTexture), Entity(150,150,grassTexture)};
+    Food apple(100, 0, appleTexture) ;
+
+    //Entity entities[3] = {Entity(0,0,grassTexture), Entity(100,100,grassTexture), Entity(150,150,grassTexture)};
 
     bool gameRunning = true;
     SDL_Event event;
@@ -58,7 +61,9 @@ int main(int argv, char* args[]) {
         window.renderCheckerboard(64, screenWidth, screenHeight);
                 //renderEntities(window, entities, std::size(entities));
         window.render(player);
+        window.render(apple);
         player.update();
+        apple.move();
         window.display();
 
         Uint32 frameTime = SDL_GetTicks() - frameStart;

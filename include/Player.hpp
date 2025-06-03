@@ -19,4 +19,4 @@ private:
     int currentFrameIndex = 0;
     int frameWidth, frameHeight;
     int updateCounter = 0; 
-};
+};      
